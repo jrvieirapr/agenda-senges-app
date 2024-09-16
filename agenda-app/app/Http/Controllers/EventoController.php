@@ -16,9 +16,11 @@ class EventoController extends Controller
         //Função da pagina inicial do meu dominio
         //Vou buscar no banco de dados todos os meus itens
         //Select * from eventos;
+        
         $eventos = Evento::all();
         //posso aplicar outras regras de negocio
         //retornar alguma coisa para o cliente
+        // return 'Voce esta nos eventos!';
         return view('eventos.index',compact('eventos'));
     }
 
@@ -44,6 +46,8 @@ class EventoController extends Controller
         //Request $request precisa validar aqui
         //Criar o Evento   
         //insert in Evento ('data','descricao') values('2024-09-10','Hora do almoco');     
+        //$evento['inicio'] = $request->inicio;
+        //Evento::create($evento);
         Evento::create($request->all());
         //redirecionar para o rota do index 
         //com mensagem de sucesso
@@ -98,6 +102,8 @@ class EventoController extends Controller
         //se receber $id tem que pesquisar
         //temos o delete que remove do banco
         //temos o softdelete que oculta o dado
+        //antes de deletar tem que ver se o registro
+        //não tem dependentes.
         $evento->delete();
         //redirecionar para o index
         return redirect()->route('eventos.index')
