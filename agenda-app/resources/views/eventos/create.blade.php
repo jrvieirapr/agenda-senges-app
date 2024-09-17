@@ -2,7 +2,7 @@
 
 @section('content')
     <h2>Criando novo evento</h2>
-    <!-- href="{{route('eventos.store')}}" -->
+    <!-- {{route('eventos.store')}}" -->
     <form action="/eventos" method="POST">
         <!-- habilitar o token -->
         @csrf
