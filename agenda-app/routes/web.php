@@ -14,5 +14,7 @@ Route::get('/', function(){
     return view('welcome');
 });
 
+//php artisan route:list
 Route::resource('eventos', EventoController::class);
+
 
