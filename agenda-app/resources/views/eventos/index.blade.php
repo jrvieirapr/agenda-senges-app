@@ -20,6 +20,7 @@ class="btn btn-primary">Novo</a>
         </thead>
         <tbody>
             @foreach($eventos as $evento)
+            <!-- evento.id -->
             <td>{{ $evento->id}}</td>
             <td>{{ $evento->data}}</td>
             <td>{{ $evento->descricao}}</td>
