@@ -5,7 +5,7 @@
 <h1>Agenda</h1>
 <!-- href="{{route('eventos.create')}}" -->
  <!-- "/eventos/create"  -->
-<a href="/eventos" 
+<a href="/eventos/create" 
 class="btn btn-primary">Novo</a>
 <div>
     <table class='table mt-3 table-bordered text-center'>
