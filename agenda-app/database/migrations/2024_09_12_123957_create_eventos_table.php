@@ -25,6 +25,7 @@ return new class extends Migration
             //Contato: texto
             $table->string('contato');
             //Realizado: booleano
+            // para que meu evento seja nulo usar o nullable
             $table->boolean('realizado');
             $table->timestamps();
         });

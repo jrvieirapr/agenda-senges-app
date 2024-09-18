@@ -21,6 +21,7 @@ class StoreEventoRequest extends FormRequest
      */
     public function rules(): array
     {
+     
         return [
             //
             'data' => 'required|date',

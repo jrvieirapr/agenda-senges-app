@@ -41,17 +41,25 @@ class EventoController extends Controller
      */
     public function store(StoreEventoRequest $request)
     {
+        //quando eu quiser ver uma request
+        //posso usar o dd($request)
+        //dd($request);
         //Esta função salva no banco de dados
         //Se tiver o Store Request valida antes de chegar aqui
         //Request $request precisa validar aqui
         //Criar o Evento   
         //insert in Evento ('data','descricao') values('2024-09-10','Hora do almoco');     
         //$evento['inicio'] = $request->inicio;
-        //Evento::create($evento);
+        //Evento::create($evento);        
+        $request->merge([
+            'realizado' => $request->has('realizado') ? true : false
+        ]);        
+        //dd($request->all());
         Evento::create($request->all());
         //redirecionar para o rota do index 
         //com mensagem de sucesso
-        return redirect()->route('eventos.index')
+        //return redirect()->route('eventos.index')
+        return redirect()->away('/eventos')
         ->with('success', 'Evento criado com sucesso!');
     }
 
@@ -89,7 +97,7 @@ class EventoController extends Controller
         //$descircao = $request['descricao']
         $evento->update($request->all());
         //redirecionar para o index
-        return redirect()->route('eventos.index')
+        return redirect()->away('/eventos')
         ->with('success', 'Evento atualizado com sucesso!');
     }
 
@@ -106,7 +114,7 @@ class EventoController extends Controller
         //não tem dependentes.
         $evento->delete();
         //redirecionar para o index
-        return redirect()->route('eventos.index')
+        return redirect()->away('/eventos')
         ->with('success', 'Evento removido com sucesso!');
 
     }
