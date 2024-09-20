@@ -5,6 +5,7 @@
 <h1>Agenda</h1>
 <!-- href="{{route('eventos.create')}}" -->
 <!-- "/eventos/create"  -->
+<!-- <a href="/eventos/create" -->
 <a href="/eventos/create"
     class="btn btn-primary">Novo</a>
 <div>
