@@ -11,7 +11,7 @@ use App\Http\Controllers\EventoController;
 //Nao esquecer de importar o controller
 
 Route::get('/', function(){
-    return view('welcome');
+    return redirect()->away('/eventos');
 });
 
 //php artisan route:list

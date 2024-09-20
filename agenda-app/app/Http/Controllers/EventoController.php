@@ -15,9 +15,9 @@ class EventoController extends Controller
     {
         //Função da pagina inicial do meu dominio
         //Vou buscar no banco de dados todos os meus itens
-        //Select * from eventos;
-        
-        $eventos = Evento::all();
+        //Select * from eventos;        
+        //$eventos = Evento::all();
+        $eventos = Evento::paginate(20);
         //posso aplicar outras regras de negocio
         //retornar alguma coisa para o cliente
         // return 'Voce esta nos eventos!';
@@ -60,8 +60,7 @@ class EventoController extends Controller
         //com mensagem de sucesso
         //return redirect()->route('eventos.index')
         return redirect()->away('/eventos')
-        ->with('success', 'Evento criado com sucesso!');
-    }
+        ->with('success', 'Evento criado com sucesso!');    }
 
     /**
      * Display the specified resource.
@@ -77,12 +76,11 @@ class EventoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Evento $evento)
-    {
+    public function edit(Evento $evento)   {
+        
         //Mesma situação de retorno do show
         //diferença que voce vai retornar para um formulario
-        return view('eventos.edit',compact('evento'));
-        
+        return view('eventos.edit',compact('evento'));        
     }
 
     /**
@@ -95,6 +93,9 @@ class EventoController extends Controller
         //$evento = Evento::find($id)
         //faço a troca de conteudo
         //$descircao = $request['descricao']
+        $request->merge([
+            'realizado' => $request->has('realizado') ? true : false
+        ]);   
         $evento->update($request->all());
         //redirecionar para o index
         return redirect()->away('/eventos')
